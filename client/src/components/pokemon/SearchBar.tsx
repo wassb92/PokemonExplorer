@@ -1,5 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export default function SearchBar({ search, setSearch }: any) {
+interface SearchBarProps {
+  search: string;
+  setSearch: (value: string) => void;
+}
+
+const SearchBar = ({ search, setSearch }: SearchBarProps) => {
   return (
     <input
       type="text"
@@ -9,4 +13,6 @@ export default function SearchBar({ search, setSearch }: any) {
       onChange={(e) => setSearch(e.target.value.toLowerCase())}
     />
   );
-}
+};
+
+export default SearchBar;

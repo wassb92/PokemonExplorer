@@ -33,7 +33,7 @@ const GET_POKEMONS = gql`
   }
 `;
 
-export default function PokemonPage() {
+const PokemonPage = () => {
   const [search, setSearch] = useState("");
 
   const { loading, error, data } = useQuery(GET_POKEMONS, {
@@ -42,9 +42,6 @@ export default function PokemonPage() {
       type: `%${search}%`,
     },
   });
-
-  const bgUrl =
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png";
 
   return (
     <div className="mx-auto p-6">
@@ -64,22 +61,6 @@ export default function PokemonPage() {
       />
     </div>
   );
-  // return (
-  //   <div className="bg-gray-100 min-h-screen">
-  //     <div
-  //       className="bg-cover bg-center bg-no-repeat h-60 flex items-center justify-center"
-  //       style={{ backgroundImage: `url(${bgUrl})` }}
-  //     >
-  //       <h1 className="text-3xl font-bold text-white">Pokémon Explorer</h1>
-  //     </div>
-  //     <div className="container mx-auto p-6">
-  //       <SearchBar search={search} setSearch={setSearch} />
-  //       <PokemonList
-  //         loading={loading}
-  //         error={error}
-  //         pokemons={data?.pokemon_v2_pokemon}
-  //       />
-  //     </div>
-  //   </div>
-  // );
-}
+};
+
+export default PokemonPage;

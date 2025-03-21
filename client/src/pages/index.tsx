@@ -2,7 +2,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export default function Home() {
+const Home = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -22,7 +22,7 @@ export default function Home() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="text-lg text-center max-w-xl"
       >
-        Découvrez et explorez les Pokémon avec une recherche avancée et la
+        Découvrez et explorez les Pokémons avec une recherche avancée et la
         possibilité de sauvegarder vos favoris !
       </motion.p>
 
@@ -33,7 +33,7 @@ export default function Home() {
             whileTap={{ scale: 0.9 }}
             className="px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg shadow-lg cursor-pointer"
           >
-            Explorer les Pokémon
+            Explorer les Pokémons
           </motion.button>
         </Link>
 
@@ -85,4 +85,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export default function NotFoundPage() {
+const NotFoundPage = () => {
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-gradient-to-br from-red-100 to-yellow-100 text-center px-4">
       <motion.h1
@@ -46,4 +46,6 @@ export default function NotFoundPage() {
       </motion.div>
     </div>
   );
-}
+};
+
+export default NotFoundPage;

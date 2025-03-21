@@ -1,5 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { motion } from "framer-motion";
+import type {
+  Pokemon,
+  ErrorPokemonListProps,
+  PokemonListProps,
+} from "@/types/pokemon";
 import PokemonCard from "./PokemonCard";
 
 const Loading = ({ limit = 12 }: { limit?: number }) => {
@@ -19,7 +22,7 @@ const Loading = ({ limit = 12 }: { limit?: number }) => {
   );
 };
 
-const ErrorPokemonList = ({ error }: { error: any }) => {
+const ErrorPokemonList = ({ error }: ErrorPokemonListProps) => {
   return (
     <div className="text-center py-12">
       <div className="text-4xl mb-4">⚠️</div>
@@ -27,7 +30,7 @@ const ErrorPokemonList = ({ error }: { error: any }) => {
         Une erreur est survenue
       </h2>
       <p className="text-gray-700">
-        {error.message || "Impossible de charger les Pokémon."}
+        {error.message || "Impossible de charger les Pokémons."}
       </p>
       <p className="mt-4 text-sm text-gray-500">
         Veuillez réessayer plus tard.
@@ -36,15 +39,17 @@ const ErrorPokemonList = ({ error }: { error: any }) => {
   );
 };
 
-export default function PokemonList({ loading, error, pokemons }: any) {
+const PokemonList = ({ loading, error, pokemons }: PokemonListProps) => {
   if (loading) return <Loading />;
   if (error) return <ErrorPokemonList error={error} />;
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      {pokemons.map((pokemon: any) => (
+      {pokemons.map((pokemon: Pokemon) => (
         <PokemonCard key={pokemon.id} pokemon={pokemon} />
       ))}
     </div>
   );
-}
+};
+
+export default PokemonList;

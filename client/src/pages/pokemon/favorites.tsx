@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
+import { FavoritePokemon } from "@/types/pokemon";
 
-export default function FavoritesPage() {
-  const [favorites, setFavorites] = useState([]);
-  const [isRemoving, setIsRemoving] = useState(null);
+const FavoritesPage = () => {
+  const [favorites, setFavorites] = useState<FavoritePokemon[]>([]);
+  const [isRemoving, setIsRemoving] = useState<number | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -15,13 +15,11 @@ export default function FavoritesPage() {
     setFavorites(storedFavorites);
   }, []);
 
-  const removeFavorite = (id: any) => {
+  const removeFavorite = (id: number) => {
     setIsRemoving(id);
 
     setTimeout(() => {
-      const updatedFavorites = favorites.filter(
-        (pokemon: any) => pokemon.id !== id
-      );
+      const updatedFavorites = favorites.filter((pokemon) => pokemon.id !== id);
       setFavorites(updatedFavorites);
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
       setIsRemoving(null);
@@ -66,7 +64,7 @@ export default function FavoritesPage() {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <AnimatePresence>
-            {favorites.map((pokemon: any) => (
+            {favorites.map((pokemon) => (
               <motion.div
                 key={pokemon.id}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -110,4 +108,6 @@ export default function FavoritesPage() {
       )}
     </motion.div>
   );
-}
+};
+
+export default FavoritesPage;

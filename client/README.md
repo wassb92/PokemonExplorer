@@ -1,6 +1,6 @@
 # Pokémon Explorer
 
-Une application Next.js + GraphQL pour explorer les Pokémon, rechercher par nom ou type, ajouter des favoris, et naviguer dans une interface moderne et animée.  
+Une application Next.js + GraphQL pour explorer les Pokémons, rechercher par nom ou type, ajouter des favoris, et naviguer dans une interface moderne et animée.  
 Ce projet inclut également un Storybook avec tests UI Playwright.
 
 ---
@@ -12,7 +12,7 @@ Ce projet inclut également un Storybook avec tests UI Playwright.
 - **Apollo Client** + **GraphQL** (PokeAPI)
 - **Heroicons** pour les icônes
 - **Framer Motion** pour les animations
-- **Storybook** pour l’exploration des composants
+- **Storybook** pour l'exploration des composants
 - **Playwright + @storybook/test** pour les tests UI
 
 ---
@@ -52,7 +52,7 @@ npm install
 
 ## ▶️ Démarrage
 
-### Lancer l’application
+### Lancer l'application
 
 ```bash
 npm run dev
@@ -110,4 +110,4 @@ Ce projet met en avant la **capacité à structurer un projet Next.js moderne**,
 ## 🧑‍💻 Auteur
 
 Développé par **Wassini Bouzidi**  
-[Portfolio](https://www.wassini-bouzidi.com) · [LinkedIn](https://www.linkedin.com/in/wassini-bouzidi)
+[Portfolio](https://www.wassini-bouzidi.com) · [LinkedIn](https://www.linkedin.com/in/wassini-bouzidi) · [GitHub](https://github.com/wassb92)
