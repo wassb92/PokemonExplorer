@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { gql } from "@apollo/client";
-import { useRouter } from "next/router";
 import client from "../../lib/apolloClient";
 
 const GET_POKEMON_DETAILS = gql`
@@ -22,7 +22,7 @@ const GET_POKEMON_DETAILS = gql`
   }
 `;
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params }: any) {
   const { data } = await client.query({
     query: GET_POKEMON_DETAILS,
     variables: { id: parseInt(params.id) },
@@ -31,7 +31,7 @@ export async function getServerSideProps({ params }) {
   return { props: { pokemon: data.pokemon_v2_pokemon_by_pk } };
 }
 
-export default function PokemonDetails({ pokemon }) {
+export default function PokemonDetails({ pokemon }: any) {
   const sprite =
     pokemon.pokemon_v2_pokemonsprites[0]?.sprites?.front_default ||
     "/placeholder.png";
@@ -43,11 +43,12 @@ export default function PokemonDetails({ pokemon }) {
       <h1 className="text-3xl font-bold text-indigo-700 capitalize">
         {pokemon.name}
       </h1>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={sprite} alt={pokemon.name} className="w-32 h-32 mx-auto my-4" />
       <p className="text-lg text-gray-600">
         Type{pokemon.pokemon_v2_pokemontypes.length > 1 ? "s" : ""}:{" "}
         {pokemon.pokemon_v2_pokemontypes
-          .map((t) => t.pokemon_v2_type.name)
+          .map((t: any) => t.pokemon_v2_type.name)
           .join(", ")}
       </p>
       <p className="text-lg">Taille : {pokemon.height / 10} m</p>

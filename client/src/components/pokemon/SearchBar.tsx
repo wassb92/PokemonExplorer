@@ -1,4 +1,5 @@
-export default function SearchBar({ search, setSearch }) {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export default function SearchBar({ search, setSearch }: any) {
   return (
     <input
       type="text"

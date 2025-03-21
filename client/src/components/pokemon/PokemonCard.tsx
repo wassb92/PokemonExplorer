@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { HeartIcon as HeartOutline } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartSolid } from "@heroicons/react/24/solid";
 
-export default function PokemonCard({ pokemon }) {
+export default function PokemonCard({ pokemon }: any) {
   const sprite =
     pokemon.pokemon_v2_pokemonsprites[0]?.sprites?.front_default ||
     "/placeholder.png";
@@ -11,15 +12,24 @@ export default function PokemonCard({ pokemon }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-    setIsFavorite(favorites.some((fav) => fav.id === pokemon.id));
-  }, [pokemon.id]);
+    if (typeof window !== "undefined") {
+      console.log("localStorage:", localStorage.getItem("favorites"));
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("pokemon?.id = ", pokemon?.id);
+    if (pokemon?.id) {
+      const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+      setIsFavorite(favorites.some((fav: any) => fav.id === pokemon.id));
+    }
+  }, [pokemon?.id]);
 
   const toggleFavorite = () => {
     let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
     if (isFavorite) {
-      favorites = favorites.filter((fav) => fav.id !== pokemon.id);
+      favorites = favorites.filter((fav: any) => fav.id !== pokemon.id);
     } else {
       favorites.push({
         id: pokemon.id,
@@ -56,7 +66,7 @@ export default function PokemonCard({ pokemon }) {
 
       <p className="text-sm text-gray-500 mt-1">
         {pokemon.pokemon_v2_pokemontypes
-          .map((t) => t.pokemon_v2_type.name)
+          .map((t: any) => t.pokemon_v2_type.name)
           .join(", ")}
       </p>
 

@@ -39,3 +39,21 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+*storybook.log
+
+# Node.js dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Storybook build & cache
+.storybook/
+storybook-static/
+node_modules/.cache/
+
+# Logs & system files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store

@@ -1,40 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Pokémon Explorer
 
-## Getting Started
+Une application Next.js + GraphQL pour explorer les Pokémon, rechercher par nom ou type, ajouter des favoris, et naviguer dans une interface moderne et animée.  
+Ce projet inclut également un Storybook avec tests UI Playwright.
 
-First, run the development server:
+---
+
+## 🧱 Stack utilisée
+
+- **Next.js** 15 + **TypeScript**
+- **TailwindCSS** pour le style
+- **Apollo Client** + **GraphQL** (PokeAPI)
+- **Heroicons** pour les icônes
+- **Framer Motion** pour les animations
+- **Storybook** pour l’exploration des composants
+- **Playwright + @storybook/test** pour les tests UI
+
+---
+
+## 🚀 Fonctionnalités
+
+### 🔍 Recherche & Affichage
+
+- Rechercher un Pokémon par **nom** ou **type**
+- Affichage sous forme de **cartes** animées
+- Navigation vers les détails dans un nouvel onglet
+
+### ❤️ Favoris
+
+- Ajouter ou retirer un Pokémon des favoris
+- Icône cœur dynamique (vide/plein)
+- Galerie des favoris accessible depuis la page principale
+- **LocalStorage** utilisé pour stocker les favoris
+
+### 🧪 Tests UI avec Storybook
+
+- Stories pour tous les composants : `PokemonCard`, `PokemonList`, `SearchBar`
+- Interaction testée avec **Playwright**
+- `npm run test-storybook` pour lancer les tests
+
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/ton-repo/pokemon-explorer.git
+cd client
+npm install
+```
+
+---
+
+## ▶️ Démarrage
+
+### Lancer l’application
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+👉 http://localhost:3000
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Lancer Storybook
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+npm run storybook
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+👉 http://localhost:6006
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Lancer les tests UI
 
-## Learn More
+```bash
+npx playwright install
+npm run test-storybook
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## 📁 Arborescence simplifiée
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── components/
+│   └── pokemon/
+│       ├── PokemonCard.tsx
+│       ├── PokemonList.tsx
+│       ├── SearchBar.tsx
+│       └── __storybook__/SearchBarWrapper.tsx
+├── pages/
+│   ├── index.tsx
+│   └── pokemon/
+│       ├── [id].tsx
+│       ├── index.tsx
+│       └── favorites.tsx
+├── lib/
+│   └── apolloClient.ts
+├── styles/
+│   └── globals.css
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧠 À propos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Ce projet met en avant la **capacité à structurer un projet Next.js moderne**, à **utiliser GraphQL proprement**, à **animer avec Framer Motion**, et à **maintenir une bonne qualité de code avec Storybook et les tests UI**.
+
+---
+
+## 🧑‍💻 Auteur
+
+Développé par **Wassini Bouzidi**  
+[Portfolio](https://www.wassini-bouzidi.com) · [LinkedIn](https://www.linkedin.com/in/wassini-bouzidi)
