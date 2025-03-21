@@ -49,7 +49,6 @@ const PokemonDetails = ({ pokemon }: { pokemon: PokemonDetailsType }) => {
       <h1 className="text-3xl font-bold text-indigo-700 capitalize">
         {pokemon.name}
       </h1>
-      {/* <img src={sprite} alt={pokemon.name} className="w-32 h-32 mx-auto my-4" /> */}
       <Image
         src={sprite}
         alt={pokemon.name}
