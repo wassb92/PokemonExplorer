@@ -18,7 +18,6 @@ export default function PokemonCard({ pokemon }: any) {
   }, []);
 
   useEffect(() => {
-    console.log("pokemon?.id = ", pokemon?.id);
     if (pokemon?.id) {
       const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
       setIsFavorite(favorites.some((fav: any) => fav.id === pokemon.id));

@@ -23,10 +23,20 @@ const GET_POKEMON_DETAILS = gql`
 `;
 
 export async function getServerSideProps({ params }: any) {
+  const id = parseInt(params.id);
+
+  if (isNaN(id)) {
+    return { notFound: true };
+  }
+
   const { data } = await client.query({
     query: GET_POKEMON_DETAILS,
-    variables: { id: parseInt(params.id) },
+    variables: { id },
   });
+
+  if (!data.pokemon_v2_pokemon_by_pk) {
+    return { notFound: true };
+  }
 
   return { props: { pokemon: data.pokemon_v2_pokemon_by_pk } };
 }
@@ -35,8 +45,6 @@ export default function PokemonDetails({ pokemon }: any) {
   const sprite =
     pokemon.pokemon_v2_pokemonsprites[0]?.sprites?.front_default ||
     "/placeholder.png";
-
-  console.log("pokemon = ", pokemon);
 
   return (
     <div className="max-w-3xl mx-auto p-6 text-center">
